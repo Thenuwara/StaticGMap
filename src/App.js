@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 import {
   StaticGoogleMap,
@@ -9,34 +8,34 @@ import {
 
 function App() {
 
-  const handleClick = () => {
-    alert("Button clicked!");
-  };
+  const [location, setLocation] = useState({
+    lat: 40.737102,
+    lng: -73.990318
+  });
 
-  console.log('kkkkkkkkkkkkkk', process.env.REACT_APP_GAPI_KEY);
+  const updateLocation = () => {
+    // new values
+    setLocation({
+      lat: 40.749825,
+      lng: -73.987963
+    });
+  };
 
   return (
     <div className="App">
-      
-      <button onClick={handleClick}>
-        Click Me
+
+      <button onClick={updateLocation}>
+        Update Location
       </button>
 
       <StaticGoogleMap size="600x600" apiKey={process.env.REACT_APP_GAPI_KEY}>
         <Marker
-          location={{ lat: 40.737102, lng: -73.990318 }}
+          location={location}
           color="blue"
           label="P"
         />
-        <Path
-          points={[
-            '40.737102,-73.990318',
-            '40.749825,-73.987963',
-            '40.752946,-73.987384',
-            '40.755823,-73.986397',
-          ]}
-        />
       </StaticGoogleMap>
+
     </div>
   );
 }
