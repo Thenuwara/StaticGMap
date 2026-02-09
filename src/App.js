@@ -8,9 +8,20 @@ import {
 } from 'react-static-google-map';
 
 function App() {
-  console.log('kkkkkkkkkkkkkk', process.env.REACT_APP_GAPI_KEY)
+
+  const handleClick = () => {
+    alert("Button clicked!");
+  };
+
+  console.log('kkkkkkkkkkkkkk', process.env.REACT_APP_GAPI_KEY);
+
   return (
     <div className="App">
+      
+      <button onClick={handleClick}>
+        Click Me
+      </button>
+
       <StaticGoogleMap size="600x600" apiKey={process.env.REACT_APP_GAPI_KEY}>
         <Marker
           location={{ lat: 40.737102, lng: -73.990318 }}
